@@ -9,6 +9,7 @@ import { PubSubAdapter } from '../Adapters/PubSub/PubSubAdapter';
 import { WSSAdapter } from '../Adapters/WebSocketServer/WSSAdapter';
 import { CheckGroup } from '../Security/CheckGroup';
 import type { SchemaOptions } from '../SchemaMigrations/Migrations';
+import { SchemaCacheAdapter } from '../Adapters/Cache/SchemaCacheAdapter';
 
 type Adapter<T> = string | any | T;
 type NumberOrBoolean = number | boolean;
@@ -157,6 +158,8 @@ export interface ParseServerOptions {
   passwordPolicy: ?PasswordPolicyOptions;
   /* Adapter module for the cache */
   cacheAdapter: ?Adapter<CacheAdapter>;
+  /* Adapter module for the schema cache */
+  schemaCacheAdapter: ?Adapter<SchemaCacheAdapter>;
   /* Adapter module for email sending */
   emailAdapter: ?Adapter<MailAdapter>;
   /* Public URL to your parse server with http:// or https://.
@@ -246,7 +249,9 @@ export interface ParseServerOptions {
   playgroundPath: ?string;
   /* Callback when server has started */
   serverStartComplete: ?(error: ?Error) => void;
-  /* Rest representation on Parse.Schema https://docs.parseplatform.org/rest/guide/#adding-a-schema */
+  /* Defined schema
+  :ENV: PARSE_SERVER_SCHEMA
+  */
   schema: ?SchemaOptions;
   /* Callback when server has closed */
   serverCloseComplete: ?() => void;
