@@ -9,7 +9,7 @@ import { PubSubAdapter } from '../Adapters/PubSub/PubSubAdapter';
 import { WSSAdapter } from '../Adapters/WebSocketServer/WSSAdapter';
 import { CheckGroup } from '../Security/CheckGroup';
 import type { SchemaOptions } from '../SchemaMigrations/Migrations';
-import { SchemaCacheAdapter } from '../Adapters/Cache/SchemaCacheAdapter';
+import SchemaCacheAdapter from '../Adapters/Schema/SchemaCacheAdapter';
 
 type Adapter<T> = string | any | T;
 type NumberOrBoolean = number | boolean;
